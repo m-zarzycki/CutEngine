@@ -26,7 +26,7 @@ public class User {
     @Column(name = "last_name", nullable = false, length = 50)
     private String lastName;
 
-    @Column(name = "username", nullable = false, unique = true, length = 50)
+    @Column(name = "username", nullable = false, unique = true, length = 32)
     private String username;
 
     @Column(name = "password", nullable = false)
@@ -55,9 +55,5 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.role = role;
-    }
-
-    public enum Role {
-        CUSTOMER, STYLIST, ADMIN
     }
 }
