@@ -9,6 +9,8 @@ import com.cutengine.exception.ResourceNotFoundException;
 import com.cutengine.exception.UsernameAlreadyExistsException;
 import com.cutengine.mapper.UserMapper;
 import com.cutengine.repository.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,6 +49,11 @@ public class UserService {
 
         User saved = userRepository.save(user);
         return UserMapper.toResponse(saved);
+    }
+
+    public Page<UserResponse> findAll(Pageable pageable) {
+        return userRepository.findAll(pageable)
+                .map(UserMapper::toResponse);
     }
 
     public UserResponse findById(Long id) {
