@@ -1,6 +1,6 @@
 package com.cutengine.exception;
 
-public class UsernameAlreadyExistsException extends RuntimeException {
+public class UsernameAlreadyExistsException extends ConflictException {
 
     private static final String MESSAGE = "Uzytkownik o nicku %s juz istnieje";
 
